@@ -794,206 +794,16 @@ body {
 
 /* Media Queries Mobile */
 @media (max-width: 900px) {
+  /* NAVBAR */
   .nav-links { display: none; }
   .navbar { 
-    padding: 1rem 5%; 
-    background: rgba(0, 0, 0, 0.9); 
-  }
-
-  .hero-bento {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto auto auto;
-    padding: 100px 1rem 1rem 1rem;
-    gap: 0.5rem;
+    padding: 1rem 1.5rem; 
+    background: rgba(15, 23, 42, 0.95); 
+    backdrop-filter: blur(15px);
   }
   
-  .central-road {
-    display: flex;
-    position: relative;
-    grid-column: 1 / 2;
-    grid-row: 2 / 3;
-    top: 0;
-    left: 0;
-    transform: none;
-    width: auto;
-    margin-left: -1rem;
-    margin-right: -1rem;
-    height: 80px;
-    border-left: none;
-    border-right: none;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    flex-direction: column;
-    justify-content: center;
-    z-index: 55;
-    background: rgba(15, 23, 42, 0.85);
-  }
-  
-  .road-markings {
-    top: 50%;
-    left: 0;
-    width: 100%;
-    height: 6px;
-    transform: translateY(-50%);
-    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.4) 50%, transparent 50%);
-    background-size: 60px 100%;
-    animation: moveRoadHorizontal 0.6s linear infinite;
-  }
-
-  .scroll-car {
-    width: 100px;
-    height: auto;
-    top: 50%;
-    margin-top: 0;
-    left: -20px;
-    position: absolute;
-    /* transform handled by JS */
-  }
-  
-  @keyframes moveRoadHorizontal {
-    from { background-position: 0 0; }
-    to { background-position: -60px 0; }
-  }
-  
-  .bento-text {
-    grid-column: 1 / 2;
-    grid-row: 1 / 2;
-    padding: 1.5rem;
-  }
-
-  .text-content {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .slider-pagination {
-    order: -1;
-    margin-top: 0;
-    margin-bottom: 1.5rem;
-  }
-
-  .slider-pagination > div {
-    align-items: flex-end;
-  }
-  
-  .slider-pagination .current-slide {
-    font-size: 3.5rem;
-    line-height: 0.85;
-  }
-  
-  .slider-pagination .total-slides {
-    font-size: 1.2rem;
-    margin-right: 1rem;
-  }
-  
-  .slider-pagination .dash {
-    width: 30px;
-    height: 4px;
-    margin-bottom: 0.3rem;
-  }
-  
-  .stories-container {
-    min-height: 250px;
-  }
-  
-  .bento-video {
-    grid-column: 1 / 2;
-    grid-row: 3 / 4;
-    height: 300px;
-  }
-  
-  .bento-ecosystem {
-    grid-column: 1 / 2;
-    grid-row: 4 / 5;
-    padding: 1.5rem;
-  }
-  
-  .ecosystem-flex {
-    flex-direction: column;
-  }
-  
-  .eco-flex-item {
-    flex-direction: row;
-    padding: 1rem;
-    align-items: center;
-    justify-content: flex-start;
-  }
-  
-  .ecosystem-flex:hover .eco-flex-item { opacity: 1; flex: 1; }
-  .ecosystem-flex .eco-flex-item:hover { flex: 1; }
-  
-  .efi-icon {
-    margin-bottom: 0;
-    margin-right: 1rem;
-  }
-  
-  .eco-flex-item:hover .efi-icon {
-    margin-bottom: 0;
-    transform: scale(1.05);
-  }
-  
-  .efi-info {
-    align-items: flex-start;
-    text-align: left;
-  }
-  
-  .eco-flex-item:hover .efi-info h5 {
-    font-size: 0.95rem;
-    margin-bottom: 0;
-  }
-  
-  .efi-info p {
-    display: none; /* Hide description on mobile to save space */
-  }
-  
-  .text-content h1 {
-    font-size: 1.8rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  .text-content p { 
-    font-size: 0.95rem; 
-    width: 100%;
-  }
-  
-  .button-group { 
-    flex-direction: column; 
-    width: 100%;
-  }
-  
-  .button-group .btn {
-    width: 100%;
-    justify-content: center;
-  }
-
-  /* Ecosystem Grid 2x2 for Mobile */
-  .ecosystem-flex {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    flex-direction: unset;
-  }
-  
-  .eco-flex-item {
-    flex-direction: column;
-    padding: 1.5rem;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .efi-icon {
-    margin-right: 0;
-    margin-bottom: 1rem;
-  }
-
-  .efi-info {
-    align-items: center;
-    text-align: center;
-  }
-
-  .ecosystem-flex:hover .eco-flex-item,
-  .ecosystem-flex .eco-flex-item:hover {
-    flex: unset; /* Remove the flex grow behavior on mobile */
+  .navbar.scrolled {
+    padding: 1rem 1.5rem;
   }
 
   .btn-outline-pill.desktop-only {
@@ -1007,6 +817,208 @@ body {
 
   .fab-contact {
     display: flex;
+  }
+
+  /* HERO BENTO - Mobile Redesign */
+  .hero-bento {
+    display: flex;
+    flex-direction: column;
+    padding: 90px 1rem 1rem 1rem;
+    gap: 1rem;
+  }
+  
+  /* Esconder a animação da estrada e carrinho no celular para um visual mais limpo */
+  .central-road, .scroll-car {
+    display: none !important;
+  }
+  
+  .bento-video {
+    height: 350px;
+    border-radius: 20px;
+    order: -1; /* Força o vídeo para o topo */
+  }
+  
+  .bento-text {
+    padding: 2rem 1.5rem;
+    border-radius: 20px;
+  }
+
+  .text-content {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .text-content h1 {
+    font-size: 2.2rem;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+  
+  .text-content p { 
+    font-size: 1.05rem; 
+    width: 100%;
+    color: #cbd5e1;
+  }
+  
+  .slider-pagination {
+    margin-top: 0;
+    margin-bottom: 2rem;
+  }
+  
+  .slider-pagination .current-slide {
+    font-size: 3rem;
+  }
+  
+  .slider-pagination .total-slides {
+    font-size: 1.1rem;
+    margin-right: 0.8rem;
+  }
+  
+  .stories-container {
+    min-height: auto; /* Deixa o texto ditar a altura */
+  }
+  
+  .button-group { 
+    flex-direction: column; 
+    width: 100%;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  
+  .button-group .btn {
+    width: 100%;
+    justify-content: center;
+    padding: 1.2rem;
+  }
+
+  /* BENTO ECOSYSTEM */
+  .bento-ecosystem {
+    padding: 1.5rem;
+    border-radius: 20px;
+  }
+  
+  .ecosystem-flex {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    flex-direction: unset;
+  }
+  
+  .eco-flex-item {
+    flex-direction: row;
+    padding: 1.2rem;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .efi-icon {
+    margin-right: 1rem;
+    margin-bottom: 0;
+  }
+
+  .efi-info {
+    align-items: flex-start;
+    text-align: left;
+  }
+  
+  .efi-info h5 {
+    font-size: 1rem;
+    margin-bottom: 0.2rem;
+  }
+  
+  .efi-info p {
+    display: block; /* Exibe a desc no mobile */
+    font-size: 0.85rem;
+  }
+
+  .ecosystem-flex:hover .eco-flex-item,
+  .ecosystem-flex .eco-flex-item:hover {
+    flex: unset;
+  }
+
+  /* CATALOG */
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .car-card {
+    border-radius: 20px;
+  }
+  
+  .img-wrapper {
+    height: 240px;
+  }
+  
+  .car-info {
+    padding: 1.5rem;
+  }
+  
+  .car-btn {
+    padding: 1.2rem;
+    font-size: 1.1rem;
+    border-radius: 12px;
+  }
+}
+
+/* @media for Details Page Mobile */
+@media (max-width: 900px) {
+  .details-page {
+    padding-top: 80px;
+    background-color: white; 
+  }
+  
+  .details-container {
+    padding: 0; 
+  }
+  
+  .btn-back {
+    margin: 1.5rem 1.5rem 1rem;
+  }
+  
+  .details-content {
+    box-shadow: none;
+    border-radius: 0;
+    gap: 0;
+  }
+  
+  .details-image-wrapper {
+    height: 300px;
+    min-height: auto;
+  }
+  
+  .details-info-box {
+    padding: 2rem 1.5rem;
+  }
+  
+  .details-title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .details-specs {
+    grid-template-columns: 1fr; 
+    gap: 1.2rem;
+  }
+  
+  .details-price-box {
+    padding: 1.5rem;
+    margin: 2rem -1.5rem; 
+    border-radius: 0;
+    border-left: none;
+  }
+  
+  .btn-whatsapp {
+    position: fixed;
+    bottom: 20px;
+    left: 5%;
+    width: 90%;
+    z-index: 100;
+    box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+  }
+  
+  .details-perks {
+    padding-bottom: 80px; 
   }
 }
 

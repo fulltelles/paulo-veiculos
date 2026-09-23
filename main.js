@@ -74,9 +74,8 @@ window.addEventListener('scroll', () => {
     if (scrollCar) {
       const isMobile = window.innerWidth <= 900;
       if (isMobile) {
-        // Horizontal scroll for mobile
-        const maxTranslateX = window.innerWidth * 0.7;
-        targetTranslateX = progress * maxTranslateX;
+        // Car animation disabled on mobile for cleaner UI
+        targetTranslateX = 0;
         targetTranslateY = 0;
       } else {
         // Vertical scroll for desktop
