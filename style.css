@@ -823,24 +823,43 @@ body {
   .hero-bento {
     display: flex;
     flex-direction: column;
-    padding: 90px 1rem 1rem 1rem;
+    padding: 80px 1rem 1rem 1rem;
     gap: 1rem;
   }
   
-  /* Esconder a animação da estrada e carrinho no celular para um visual mais limpo */
   .central-road, .scroll-car {
     display: none !important;
   }
   
   .bento-video {
-    height: 350px;
+    height: 250px;
     border-radius: 20px;
     order: -1; /* Força o vídeo para o topo */
+    width: 100%;
   }
   
   .bento-text {
     padding: 2rem 1.5rem;
     border-radius: 20px;
+    background: #ffffff;
+  }
+
+  .stories-container {
+    min-height: auto;
+    display: block;
+  }
+
+  .story-step {
+    position: relative;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    height: auto;
+  }
+
+  /* Ocultar os outros passos no celular para evitar poluição visual */
+  .story-step.step-2, .story-step.step-3 {
+    display: none;
   }
 
   .text-content {
@@ -852,30 +871,18 @@ body {
     font-size: 2.2rem;
     line-height: 1.1;
     margin-bottom: 1rem;
+    color: var(--primary-blue);
   }
   
   .text-content p { 
-    font-size: 1.05rem; 
+    font-size: 1rem; 
     width: 100%;
-    color: #cbd5e1;
+    color: #475569; /* Cinza escuro para contraste no fundo branco */
+    margin-bottom: 1.5rem;
   }
   
   .slider-pagination {
-    margin-top: 0;
-    margin-bottom: 2rem;
-  }
-  
-  .slider-pagination .current-slide {
-    font-size: 3rem;
-  }
-  
-  .slider-pagination .total-slides {
-    font-size: 1.1rem;
-    margin-right: 0.8rem;
-  }
-  
-  .stories-container {
-    min-height: auto; /* Deixa o texto ditar a altura */
+    display: none; /* Ocultar paginação no mobile pois só exibiremos 1 passo */
   }
   
   .button-group { 
