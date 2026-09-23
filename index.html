@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Paulo Veículos - O melhor negócio</title>
+    <meta name="description" content="Seminovos revisados, com garantia e as melhores condições para você sair de carro novo." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="logo">
+        <img src="/logo-pv.png" alt="Paulo Veículos" class="logo-img" />
+        <div class="logo-text">PAULO<br><span>VEÍCULOS</span></div>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#hero" class="active">Início</a></li>
+        <li><a href="#catalog">Veículos</a></li>
+        <li><a href="#about">Sobre nós</a></li>
+        <li><a href="#contact">Contato</a></li>
+      </ul>
+      <a href="#contact" class="btn-outline-pill desktop-only"><i data-lucide="message-circle"></i> Fale conosco</a>
+      
+      <!-- Mobile Hamburger Button -->
+      <button class="mobile-menu-btn" id="mobile-menu-btn">
+        <i data-lucide="menu"></i>
+      </button>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobile-menu">
+      <div class="mobile-menu-header">
+        <div class="logo">
+          <img src="/logo-pv.png" alt="Paulo Veículos" class="logo-img" />
+          <div class="logo-text">PAULO<br><span>VEÍCULOS</span></div>
+        </div>
+        <button class="mobile-close-btn" id="mobile-close-btn">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+      <ul class="mobile-nav-links">
+        <li><a href="#hero" class="mobile-nav-link active">Início</a></li>
+        <li><a href="#catalog" class="mobile-nav-link">Veículos</a></li>
+        <li><a href="#about" class="mobile-nav-link">Sobre nós</a></li>
+        <li><a href="#contact" class="mobile-nav-link">Contato</a></li>
+      </ul>
+      <div class="mobile-menu-footer">
+        <a href="#contact" class="btn-primary" style="width: 100%; text-align: center; padding: 1rem; border-radius: 8px; text-decoration: none; display: block; font-weight: 600;">Fale Conosco</a>
+      </div>
+    </div>
+
+    <!-- Scroll Wrapper for Scrollytelling -->
+    <div class="hero-scroll-wrapper">
+      <!-- Bento Grid Hero Section -->
+      <div id="hero" class="hero-bento">
+      
+      <!-- Central Road Spine -->
+      <div class="central-road">
+        <div class="road-markings"></div>
+        <img src="/scroll-car.png" alt="Carro Esportivo" class="scroll-car" id="scroll-car" />
+      </div>
+
+
+      <!-- 1. Text Card -->
+      <div class="bento-text">
+        <div class="stories-container">
+          
+          <!-- Scene 1 -->
+          <div class="story-step step-1 active" data-frame="2">
+            <div class="text-content">
+              <div class="mask-reveal">
+                <div class="top-line"></div>
+                <span class="subtitle">SEU PRÓXIMO CARRO</span>
+              </div>
+              <div class="mask-reveal">
+                <h1><strong>Qualidade e</strong><br><span class="text-light">Procedência.</span></h1>
+              </div>
+              <div class="mask-reveal">
+                <p>Seminovos revisados, com garantia e as melhores condições para você sair de carro novo.</p>
+              </div>
+              <div class="mask-reveal">
+                <a href="#catalog" class="btn-link">Descubra mais <i data-lucide="arrow-right"></i></a>
+              </div>
+              
+              <div class="slider-pagination mask-reveal">
+                <div>
+                  <span class="current-slide">01</span> <span class="total-slides">/ 03</span>
+                  <div class="dash active"></div>
+                  <div class="dash"></div>
+                  <div class="dash"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Scene 2 -->
+          <div class="story-step step-2" data-frame="120">
+            <div class="text-content">
+              <div class="mask-reveal">
+                <div class="top-line"></div>
+                <span class="subtitle">PROCEDÊNCIA GARANTIDA</span>
+              </div>
+              <div class="mask-reveal">
+                <h1><strong>Estrutura</strong><br><span class="text-light">Premium.</span></h1>
+              </div>
+              <div class="mask-reveal">
+                <p>Cada veículo em nosso pátio passa por um rigoroso processo de inspeção visual e mecânica.</p>
+              </div>
+              <div class="mask-reveal">
+                <a href="#catalog" class="btn-link">Conheça nossa loja <i data-lucide="arrow-right"></i></a>
+              </div>
+              
+              <div class="slider-pagination mask-reveal">
+                <div>
+                  <span class="current-slide">02</span> <span class="total-slides">/ 03</span>
+                  <div class="dash"></div>
+                  <div class="dash active"></div>
+                  <div class="dash"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Scene 3 -->
+          <div class="story-step step-3" data-frame="229">
+            <div class="text-content">
+              <div class="mask-reveal">
+                <div class="top-line"></div>
+                <span class="subtitle">VENHA NOS VISITAR</span>
+              </div>
+              <div class="mask-reveal">
+                <h1><strong>Acelere para o</strong><br><span class="text-light">Futuro.</span></h1>
+              </div>
+              <div class="mask-reveal">
+                <p>Venha tomar um café conosco. Localização privilegiada e atendimento VIP esperando por você.</p>
+              </div>
+              <div class="mask-reveal">
+                <a href="#contact" class="btn-link">Como chegar <i data-lucide="arrow-right"></i></a>
+              </div>
+              
+              <div class="slider-pagination mask-reveal">
+                <div>
+                  <span class="current-slide">03</span> <span class="total-slides">/ 03</span>
+                  <div class="dash"></div>
+                  <div class="dash"></div>
+                  <div class="dash active"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div> <!-- End stories-container -->
+      </div> <!-- End bento-text -->
+      
+      <!-- 2. Video Card (Top Right) -->
+      <div class="bento-video">
+        <canvas id="hero-lightpass"></canvas>
+      </div>
+
+      <!-- 3. PV Ecosystem Card (Creative Accordion) -->
+      <div class="bento-ecosystem">
+        <div class="ecosystem-header">
+          <h4>O Ecossistema PV</h4>
+          <p>Tudo o que você e seu veículo precisam em um só lugar.</p>
+        </div>
+        <div class="ecosystem-flex">
+          
+          <a href="#" class="eco-flex-item">
+            <div class="efi-icon"><i data-lucide="shield-check"></i></div>
+            <div class="efi-info">
+              <h5>Auto Proteção</h5>
+              <p>Segurança 24h para você.</p>
+            </div>
+          </a>
+
+          <a href="#" class="eco-flex-item">
+            <div class="efi-icon"><i data-lucide="fuel"></i></div>
+            <div class="efi-info">
+              <h5>Auto Posto</h5>
+              <p>Qualidade premium.</p>
+            </div>
+          </a>
+
+          <a href="#" class="eco-flex-item">
+            <div class="efi-icon"><i data-lucide="coffee"></i></div>
+            <div class="efi-info">
+              <h5>Conveniência</h5>
+              <p>Sua pausa perfeita.</p>
+            </div>
+          </a>
+
+          <a href="#" class="eco-flex-item">
+            <div class="efi-icon"><i data-lucide="wrench"></i></div>
+            <div class="efi-info">
+              <h5>Auto Center</h5>
+              <p>Mecânica de ponta.</p>
+            </div>
+          </a>
+
+        </div>
+      </div>
+
+    </div>
+    </div> <!-- End hero-scroll-wrapper -->
+
+    <!-- Catalog Section -->
+    <section id="catalog" class="catalog-section">
+      <div class="catalog-header">
+        <h2>Catálogo de Seminovos</h2>
+        <p>Encontre a máquina perfeita para o seu estilo de vida.</p>
+      </div>
+      
+      <div class="filters">
+        <button class="filter-btn active" data-filter="all">Todos</button>
+        <button class="filter-btn" data-filter="suv">SUV</button>
+        <button class="filter-btn" data-filter="sedan">Sedan</button>
+        <button class="filter-btn" data-filter="sport">Esportivo</button>
+      </div>
+
+      <div class="grid" id="car-grid">
+        <!-- Cards will be populated by main.js -->
+      </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer id="contact" class="footer">
+      <div class="footer-content">
+        <div class="footer-col">
+          <h3>Premium Auto</h3>
+          <p>A sua concessionária de veículos seminovos de alto padrão.</p>
+        </div>
+        <div class="footer-col">
+          <h3>Contato</h3>
+          <p>Av. das Américas, 1000 - Rio de Janeiro</p>
+          <p>Telefone: (21) 9999-9999</p>
+        </div>
+        <div class="footer-col">
+          <h3>Redes Sociais</h3>
+          <p><a href="#">Instagram</a></p>
+          <p><a href="#">Facebook</a></p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Premium Auto. Todos os direitos reservados.</p>
+      </div>
+    </footer>
+
+    <!-- Floating Action Button (Mobile) -->
+    <a href="#contact" class="fab-contact">
+      <i data-lucide="message-circle"></i>
+    </a>
+
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
