@@ -184,6 +184,15 @@ async function fetchCars() {
     
     if (data && data.length > 0) {
       cars = data;
+      
+      // Simulação de múltiplas imagens para dados reais do banco
+      cars.forEach(car => {
+        car.images = [
+          car.image,
+          'https://images.unsplash.com/photo-1503376710356-70e68c85b57d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+          'https://images.unsplash.com/photo-1580273916550-e323be2ae537?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+        ];
+      });
     } else {
       // Fallback data if table is empty or missing
       cars = [
@@ -220,11 +229,13 @@ function renderCars(filterType = 'all') {
     // Links wrapped on the whole card to match layout style since button is hidden
     const btnHtml = isSold 
       ? `<button class="car-btn sold-btn" disabled>Veículo Vendido</button>` 
-      : `<a href="/details.html?id=${car.id}" class="car-btn">Ver Detalhes</a>`;
+      : `<button class="car-btn">Ver Detalhes</button>`;
+      
+    const coverImage = (car.images && car.images.length > 0) ? car.images[0] : car.image;
       
     const imgHtml = isSold
-      ? `<img src="${car.image}" alt="${car.make} ${car.model}" class="car-img" loading="lazy">`
-      : `<img src="${car.image}" alt="${car.make} ${car.model}" class="car-img" loading="lazy">`;
+      ? `<img src="${coverImage}" alt="${car.make} ${car.model}" class="car-img" loading="lazy">`
+      : `<img src="${coverImage}" alt="${car.make} ${car.model}" class="car-img" loading="lazy">`;
 
     const cardContent = `
       <div class="img-wrapper">
@@ -258,7 +269,7 @@ function renderCars(filterType = 'all') {
     `;
     
     if(!isSold) {
-      card.innerHTML = `<a href="/details.html?id=${car.id}" style="text-decoration:none; color:inherit; display:block;">${cardContent}</a>`;
+      card.innerHTML = `<div class="car-clickable" data-id="${car.id}" style="cursor:pointer; height: 100%; display:block;">${cardContent}</div>`;
     } else {
       card.innerHTML = cardContent;
     }
@@ -306,5 +317,98 @@ if (mobileMenuBtn && mobileCloseBtn && mobileMenuOverlay) {
     });
   });
 }
+
+// --- MODAL LOGIC ---
+const modal = document.getElementById('car-modal');
+const modalClose = document.getElementById('close-modal');
+const modalBody = document.getElementById('modal-body');
+
+if (grid && modal && modalBody) {
+  // Delegated click event for car cards
+  grid.addEventListener('click', (e) => {
+    const clickable = e.target.closest('.car-clickable');
+    if (!clickable) return;
+    
+    const carId = parseInt(clickable.getAttribute('data-id'));
+    const car = cars.find(c => c.id === carId);
+    if (!car) return;
+    
+    // Populate modal
+    // Normalize image array for the modal
+    const imageArray = (car.images && car.images.length > 0) ? car.images : [car.image];
+    
+    // Simple logic: if multiple images exist, we render arrows, else we render just the image.
+    let currentImageIdx = 0;
+    const hasMultiple = imageArray.length > 1;
+    
+    // Generate arrows if necessary
+    const controlsHtml = hasMultiple ? `
+      <button class="nav-btn prev-btn" style="position:absolute; left:10px; top:50%; transform:translateY(-50%); background:rgba(255,255,255,0.8); border:none; border-radius:50%; width:40px; height:40px; display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 4px 6px rgba(0,0,0,0.1);"><i data-lucide="chevron-left"></i></button>
+      <button class="nav-btn next-btn" style="position:absolute; right:10px; top:50%; transform:translateY(-50%); background:rgba(255,255,255,0.8); border:none; border-radius:50%; width:40px; height:40px; display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 4px 6px rgba(0,0,0,0.1);"><i data-lucide="chevron-right"></i></button>
+      <div class="img-counter" style="position:absolute; bottom:10px; right:10px; background:rgba(0,0,0,0.6); color:white; padding:4px 10px; border-radius:12px; font-size:0.8rem;">1 / ${imageArray.length}</div>
+    ` : '';
+    
+    modalBody.innerHTML = `
+      <div class="modal-car-layout">
+        <div class="modal-car-img" style="position:relative;">
+          <img id="modal-active-img" src="${imageArray[currentImageIdx]}" alt="${car.make} ${car.model}">
+          ${controlsHtml}
+        </div>
+        <div class="modal-car-info">
+          <h2 class="car-title" style="font-size: 2rem;">${car.make} ${car.model}</h2>
+          <p class="car-price-subtle" style="font-size: 1.2rem; margin-bottom: 2rem;">${car.price}</p>
+          
+          <div class="car-features-grid" style="margin-bottom: 2rem;">
+            <div class="feature-item"><span class="f-label">Marca</span><span class="f-value">${car.make}</span></div>
+            <div class="feature-item"><span class="f-label">Ano</span><span class="f-value">${car.year}</span></div>
+            <div class="feature-item"><span class="f-label">Cor</span><span class="f-value">${car.color || 'Prata'}</span></div>
+            <div class="feature-item"><span class="f-label">Km</span><span class="f-value">${car.mileage}</span></div>
+            <div class="feature-item"><span class="f-label">Tipo</span><span class="f-value">${car.type.toUpperCase()}</span></div>
+          </div>
+          
+          <a href="https://wa.me/552199999999?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20${encodeURIComponent(car.make + ' ' + car.model + ' (' + car.price + ')')}" target="_blank" class="btn-solid-blue" style="text-align: center; width: 100%;">Tenho Interesse</a>
+        </div>
+      </div>
+    `;
+    
+    // Attach gallery listeners if needed
+    if (hasMultiple) {
+      const activeImg = modalBody.querySelector('#modal-active-img');
+      const counter = modalBody.querySelector('.img-counter');
+      modalBody.querySelector('.prev-btn').addEventListener('click', () => {
+        currentImageIdx = currentImageIdx === 0 ? imageArray.length - 1 : currentImageIdx - 1;
+        activeImg.src = imageArray[currentImageIdx];
+        counter.textContent = `${currentImageIdx + 1} / ${imageArray.length}`;
+      });
+      modalBody.querySelector('.next-btn').addEventListener('click', () => {
+        currentImageIdx = currentImageIdx === imageArray.length - 1 ? 0 : currentImageIdx + 1;
+        activeImg.src = imageArray[currentImageIdx];
+        counter.textContent = `${currentImageIdx + 1} / ${imageArray.length}`;
+      });
+    }
+    
+    lucide.createIcons({ root: modalBody });
+    
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+  });
+}
+
+if (modalClose && modal) {
+  modalClose.addEventListener('click', () => {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+  
+  // Close when clicking on the dark overlay outside the modal content
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  });
+}
+
+lucide.createIcons();
 
 lucide.createIcons();
