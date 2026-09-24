@@ -187,12 +187,12 @@ async function fetchCars() {
     } else {
       // Fallback data if table is empty or missing
       cars = [
-        { id: 1, make: 'BMW', model: 'X6 M Sport', year: 2023, mileage: '15.000 km', price: 'R$ 750.000', type: 'suv', image: 'https://images.unsplash.com/photo-1555215695-3004980ad54e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', status: 'available' },
-        { id: 2, make: 'Audi', model: 'RS e-tron GT', year: 2024, mileage: '5.000 km', price: 'R$ 980.000', type: 'sport', image: 'https://images.unsplash.com/photo-1614200187524-dc4b892acf16?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', status: 'sold' },
-        { id: 3, make: 'Mercedes-Benz', model: 'C 300 AMG Line', year: 2022, mileage: '25.000 km', price: 'R$ 380.000', type: 'sedan', image: 'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', status: 'available' },
-        { id: 4, make: 'Porsche', model: 'Cayenne Coupé', year: 2023, mileage: '12.000 km', price: 'R$ 820.000', type: 'suv', image: 'https://images.unsplash.com/photo-1503376710356-70e68c85b57d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', status: 'available' },
-        { id: 5, make: 'BMW', model: '320i M Sport', year: 2022, mileage: '30.000 km', price: 'R$ 310.000', type: 'sedan', image: 'https://images.unsplash.com/photo-1556800572-1b8aeef2c54f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', status: 'available' },
-        { id: 6, make: 'Porsche', model: '911 Carrera S', year: 2021, mileage: '18.000 km', price: 'R$ 1.150.000', type: 'sport', image: 'https://images.unsplash.com/photo-1580273916550-e323be2ae537?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', status: 'available' }
+        { id: 1, make: 'BMW', model: 'X6 M Sport', year: 2023, color: 'Preto Metálico', mileage: '15.000 km', price: 'R$ 750.000', type: 'suv', image: 'https://images.unsplash.com/photo-1555215695-3004980ad54e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', status: 'available' },
+        { id: 2, make: 'Audi', model: 'RS e-tron GT', year: 2024, color: 'Cinza Nardo', mileage: '5.000 km', price: 'R$ 980.000', type: 'sport', image: 'https://images.unsplash.com/photo-1614200187524-dc4b892acf16?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', status: 'sold' },
+        { id: 3, make: 'Mercedes-Benz', model: 'C 300 AMG Line', year: 2022, color: 'Pranco Polar', mileage: '25.000 km', price: 'R$ 380.000', type: 'sedan', image: 'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', status: 'available' },
+        { id: 4, make: 'Porsche', model: 'Cayenne Coupé', year: 2023, color: 'Cinza Gelo', mileage: '12.000 km', price: 'R$ 820.000', type: 'suv', image: 'https://images.unsplash.com/photo-1503376710356-70e68c85b57d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', status: 'available' },
+        { id: 5, make: 'BMW', model: '320i M Sport', year: 2022, color: 'Azul Portimao', mileage: '30.000 km', price: 'R$ 310.000', type: 'sedan', image: 'https://images.unsplash.com/photo-1556800572-1b8aeef2c54f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', status: 'available' },
+        { id: 6, make: 'Porsche', model: '911 Carrera S', year: 2021, color: 'Amarelo Racing', mileage: '18.000 km', price: 'R$ 1.150.000', type: 'sport', image: 'https://images.unsplash.com/photo-1580273916550-e323be2ae537?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', status: 'available' }
       ];
     }
   } catch (err) {
@@ -213,30 +213,55 @@ function renderCars(filterType = 'all') {
     const card = document.createElement('div');
     card.className = 'car-card';
     const isSold = car.status === 'sold';
-    const badgeHtml = isSold ? `<div class="status-badge sold">VENDIDO</div>` : '';
+    const badgeText = isSold ? 'VENDIDO' : (car.id % 2 === 0 ? 'NOVO' : 'DESTAQUE');
+    const badgeClass = isSold ? 'sold' : (car.id % 2 === 0 ? 'novo' : 'destaque');
+    const badgeHtml = `<div class="status-badge ${badgeClass}">${badgeText}</div>`;
+    
+    // Links wrapped on the whole card to match layout style since button is hidden
     const btnHtml = isSold 
       ? `<button class="car-btn sold-btn" disabled>Veículo Vendido</button>` 
       : `<a href="/details.html?id=${car.id}" class="car-btn">Ver Detalhes</a>`;
       
     const imgHtml = isSold
       ? `<img src="${car.image}" alt="${car.make} ${car.model}" class="car-img" loading="lazy">`
-      : `<a href="/details.html?id=${car.id}"><img src="${car.image}" alt="${car.make} ${car.model}" class="car-img" loading="lazy"></a>`;
+      : `<img src="${car.image}" alt="${car.make} ${car.model}" class="car-img" loading="lazy">`;
 
-    card.innerHTML = `
+    const cardContent = `
       <div class="img-wrapper">
-        ${imgHtml}
         ${badgeHtml}
+        ${imgHtml}
       </div>
       <div class="car-info">
         <h3 class="car-title">${car.make} ${car.model}</h3>
-        <div class="car-details">
-          <span>${car.year}</span>
-          <span>${car.mileage}</span>
+        <p class="car-price-subtle">${car.price}</p>
+        
+        <div class="car-features-grid">
+          <div class="feature-item">
+            <span class="f-label">Marca</span>
+            <span class="f-value">${car.make}</span>
+          </div>
+          <div class="feature-item">
+            <span class="f-label">Ano</span>
+            <span class="f-value">${car.year}</span>
+          </div>
+          <div class="feature-item">
+            <span class="f-label">Cor</span>
+            <span class="f-value">${car.color || 'Prata'}</span>
+          </div>
+          <div class="feature-item">
+            <span class="f-label">Km</span>
+            <span class="f-value">${car.mileage}</span>
+          </div>
         </div>
-        <div class="car-price">${car.price}</div>
         ${btnHtml}
       </div>
     `;
+    
+    if(!isSold) {
+      card.innerHTML = `<a href="/details.html?id=${car.id}" style="text-decoration:none; color:inherit; display:block;">${cardContent}</a>`;
+    } else {
+      card.innerHTML = cardContent;
+    }
     grid.appendChild(card);
   });
   lucide.createIcons();

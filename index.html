@@ -75,8 +75,7 @@
           <div class="story-step step-1 active" data-frame="2">
             <div class="text-content">
               <div class="mask-reveal">
-                <div class="top-line"></div>
-                <span class="subtitle">SEU PRÓXIMO CARRO</span>
+                <div class="subtitle-pill"><div class="dot"></div> SEU PRÓXIMO CARRO</div>
               </div>
               <div class="mask-reveal">
                 <h1><strong>Qualidade e</strong><br><span class="text-light">Procedência.</span></h1>
@@ -84,8 +83,9 @@
               <div class="mask-reveal">
                 <p>Seminovos revisados, com garantia e as melhores condições para você sair de carro novo.</p>
               </div>
-              <div class="mask-reveal">
-                <a href="#catalog" class="btn-link">Descubra mais <i data-lucide="arrow-right"></i></a>
+              <div class="mask-reveal action-group">
+                <a href="#catalog" class="btn-solid-blue">Descubra mais <i data-lucide="arrow-right"></i></a>
+                <a href="#contact" class="btn-text-icon"><i data-lucide="message-circle"></i> FALAR COM CONSULTOR</a>
               </div>
               
               <div class="slider-pagination mask-reveal">
@@ -103,8 +103,7 @@
           <div class="story-step step-2" data-frame="120">
             <div class="text-content">
               <div class="mask-reveal">
-                <div class="top-line"></div>
-                <span class="subtitle">PROCEDÊNCIA GARANTIDA</span>
+                <div class="subtitle-pill"><div class="dot"></div> PROCEDÊNCIA GARANTIDA</div>
               </div>
               <div class="mask-reveal">
                 <h1><strong>Estrutura</strong><br><span class="text-light">Premium.</span></h1>
@@ -112,8 +111,9 @@
               <div class="mask-reveal">
                 <p>Cada veículo em nosso pátio passa por um rigoroso processo de inspeção visual e mecânica.</p>
               </div>
-              <div class="mask-reveal">
-                <a href="#catalog" class="btn-link">Conheça nossa loja <i data-lucide="arrow-right"></i></a>
+              <div class="mask-reveal action-group">
+                <a href="#catalog" class="btn-solid-blue">Conheça nossa loja <i data-lucide="arrow-right"></i></a>
+                <a href="#contact" class="btn-text-icon"><i data-lucide="message-circle"></i> FALAR COM CONSULTOR</a>
               </div>
               
               <div class="slider-pagination mask-reveal">
@@ -131,8 +131,7 @@
           <div class="story-step step-3" data-frame="229">
             <div class="text-content">
               <div class="mask-reveal">
-                <div class="top-line"></div>
-                <span class="subtitle">VENHA NOS VISITAR</span>
+                <div class="subtitle-pill"><div class="dot"></div> VENHA NOS VISITAR</div>
               </div>
               <div class="mask-reveal">
                 <h1><strong>Acelere para o</strong><br><span class="text-light">Futuro.</span></h1>
@@ -140,8 +139,9 @@
               <div class="mask-reveal">
                 <p>Venha tomar um café conosco. Localização privilegiada e atendimento VIP esperando por você.</p>
               </div>
-              <div class="mask-reveal">
-                <a href="#contact" class="btn-link">Como chegar <i data-lucide="arrow-right"></i></a>
+              <div class="mask-reveal action-group">
+                <a href="#contact" class="btn-solid-blue">Como chegar <i data-lucide="arrow-right"></i></a>
+                <a href="#contact" class="btn-text-icon"><i data-lucide="message-circle"></i> FALAR COM CONSULTOR</a>
               </div>
               
               <div class="slider-pagination mask-reveal">
@@ -156,24 +156,109 @@
           </div>
 
         </div> <!-- End stories-container -->
+        
+        <!-- Stats Layout -->
+        <div class="stats-row">
+          <div class="stat">
+            <h2>500+</h2>
+            <p>CARROS ENTREGUES</p>
+          </div>
+          <div class="stat">
+            <h2>100%</h2>
+            <p>PROCEDÊNCIA</p>
+          </div>
+        </div>
       </div> <!-- End bento-text -->
       
-      <!-- 2. Video Card (Top Right) -->
-      <div class="bento-video">
-        <canvas id="hero-lightpass"></canvas>
+      <!-- 2. Video and Cards (Right Column) -->
+      <div class="bento-right">
+        
+        <div class="video-container-wrapper">
+          <div class="bento-video">
+            <!-- Main Visual -->
+            <canvas id="hero-lightpass"></canvas>
+          </div>
+          
+          <!-- Badges (Overlapping) -->
+          <div class="badge-quality">
+            <i data-lucide="award"></i>
+            <span>QUALIDADE</span>
+          </div>
+          
+          <div class="badge-consultant">
+            <div class="consultant-img">
+              <img src="https://png.pngtree.com/png-vector/20240715/ourmid/pngtree-man-profile-icon-silhouette-of-businessman-face-profile-vector-png-image_7058983.png" alt="Consultor">
+              <div class="online-dot"></div>
+            </div>
+            <div class="consultant-text">
+              <span class="c-title">CONSULTOR ONLINE</span>
+              <span class="c-desc">Dúvidas? Fale comigo!</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bento-cards">
+          <div class="service-card">
+            <div class="sc-icon"><i data-lucide="car-front"></i></div>
+            <div class="sc-content">
+              <h4>Venda seu Carro</h4>
+              <p>Avaliação justa e pagamento imediato na hora.</p>
+            </div>
+          </div>
+          <div class="service-card">
+            <div class="sc-icon"><i data-lucide="hand-coins"></i></div>
+            <div class="sc-content">
+              <h4>Financiamento</h4>
+              <p>As melhores taxas do mercado em até 60x.</p>
+            </div>
+          </div>
+        </div>
+
       </div>
 
     </div>
     </div> <!-- End hero-scroll-wrapper -->
 
+    <!-- Floating Search Bar -->
+    <div class="search-bar-wrapper">
+      <div class="search-bar-container">
+        <div class="search-field">
+          <label>MARCA</label>
+          <select>
+            <option>Todas as Marcas</option>
+          </select>
+        </div>
+        <div class="search-field">
+          <label>MODELO</label>
+          <select>
+            <option>Todos os Modelos</option>
+          </select>
+        </div>
+        <div class="search-field">
+          <label>ANO MÍNIMO</label>
+          <select>
+            <option>2015</option>
+          </select>
+        </div>
+        <button class="btn-search"><i data-lucide="search"></i> Buscar Veículos</button>
+      </div>
+    </div>
+
     <!-- Catalog Section -->
     <section id="catalog" class="catalog-section">
-      <div class="catalog-header">
-        <h2>Catálogo de Seminovos</h2>
-        <p>Encontre a máquina perfeita para o seu estilo de vida.</p>
+      <div class="catalog-header-new">
+        <div class="ch-left">
+          <span class="ch-subtitle">NOSSO ESTOQUE</span>
+          <h2>Veículos em Destaque</h2>
+        </div>
+        <div class="ch-right">
+          <button class="arrow-btn"><i data-lucide="chevron-left"></i></button>
+          <button class="arrow-btn dark"><i data-lucide="chevron-right"></i></button>
+        </div>
       </div>
       
-      <div class="filters">
+      <!-- Deprecated filters (kept for logic if needed, but visually hidden in css) -->
+      <div class="filters" style="display: none;">
         <button class="filter-btn active" data-filter="all">Todos</button>
         <button class="filter-btn" data-filter="suv">SUV</button>
         <button class="filter-btn" data-filter="sedan">Sedan</button>
